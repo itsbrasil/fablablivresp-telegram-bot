@@ -1,8 +1,13 @@
 #coding=UTF-8
 
+import sys
 import datetime
 from time import sleep
 from info import months, messages
+from tokenreader import readToken 
+	
+config_file = "%s.cfg" % sys.argv[1]
+token = readToken(config_file, sys.argv[2])
 
 run_script = True
 notified = False
@@ -70,4 +75,4 @@ def main():
 
 		sleep(3) #120
 
-main()
+#main()
