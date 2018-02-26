@@ -1,6 +1,6 @@
 import ConfigParser
 
-def readToken(config_file, section):
+def readConfigData(config_file, section, data):
 	parser = ConfigParser.ConfigParser()
 	parser.read(config_file)
-	return parser.get(section, "token")
+	return parser.get(section, data)

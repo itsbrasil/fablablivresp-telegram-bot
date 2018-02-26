@@ -2,16 +2,32 @@
 
 import sys
 import datetime
+import requests
 from time import sleep
 from info import months, messages
-from tokenreader import readToken 
+from configreader import readConfigData
+
+class BotHandler:
+
+	def __init__(self, token):
+		self.api_url = "https://api.telegram.org/bot{}/".format(token)
+
+	def send_message(self, chat_id, text):
+		parameters = {"chat_id": chat_id, "text": text}
+		method = "sendMessage"
+		response = requests.post(self.api_url + method, parameters)
+		return response 
 	
-config_file = "%s.cfg" % sys.argv[1]
-token = readToken(config_file, sys.argv[2])
+
+config_file = "{}.cfg".format(sys.argv[1])
+token = readConfigData(config_file, sys.argv[2], "token")
+
+bot = BotHandler(token)
 
 run_script = True
 notified = False
 last_notification = None
+
 
 def main():
 
@@ -23,8 +39,6 @@ def main():
 		today = now.day
 		month = now.month
 		hour = now.hour
-
-		today = 10
 
 		#SE O DIA MUDAR, ALTERA A VARIÁVEL QUE CHECA SE JÁ HOUVE NOTIFICAÇÃO
 		if today != last_notification:
@@ -71,8 +85,13 @@ def main():
 			last_notification = today
 
 		else:
-			print "Não publicar nada."
+			print "Hoje é dia {} de {} e não há notificações.".format(today, months[month])
 
-		sleep(3) #120
+		sleep(120)
 
-#main()
+
+if __name__ == '__main__':  
+    try:
+        main()
+    except KeyboardInterrupt:
+        exit()
