@@ -16,11 +16,13 @@ class BotHandler:
 		parameters = {"chat_id": chat_id, "text": text}
 		method = "sendMessage"
 		response = requests.post(self.api_url + method, parameters)
+
 		return response 
 	
 
 config_file = "{}.cfg".format(sys.argv[1])
 token = readConfigData(config_file, sys.argv[2], "token")
+chat_id = readConfigData(config_file, sys.argv[2], "chat_id")
 
 bot = BotHandler(token)
 
@@ -45,49 +47,49 @@ def main():
 			notified = False
 
 		if today == 10 and notified == False and hour > 10:
-			print messages[today].format(months[month+1 if month != 12 else 1])
+			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1])) 
 			notified = True
 			last_notification = today
 
 		elif today == 13 and notified == False and hour > 10:
-			print messages[today].format(months[month+1 if month != 12 else 1])
+			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1])) 
 			notified = True
 			last_notification = today
 
 		elif today == 15 and notified == False and hour > 10:
-			print messages[today].format(months[month+1 if month != 12 else 1])
+			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1])) 
 			notified = True
 			last_notification = today
 
 		elif today == 19 and notified == False and hour > 10:
-			print messages[today]
+			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
 
 		elif today == 20 and notified == False and hour > 10:
-			print messages[today]
+			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
 
 		elif today == 25 and notified == False and hour > 10:
-			print messages[today]
+			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
 
 		elif today == 28 and notified == False and hour > 10:
-			print messages[today]
+			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
 
 		elif today == 30 and notified == False and hour > 10:
-			print messages[today]
+			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
 
 		else:
 			print "Hoje é dia {} de {} e não há notificações.".format(today, months[month])
 
-		sleep(120)
+		sleep(7200)
 
 
 if __name__ == '__main__':  
