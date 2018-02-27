@@ -86,9 +86,6 @@ def main():
 			notified = True
 			last_notification = today
 
-		else:
-			print "Hoje é dia {} de {} e não há notificações.".format(today, months[month])
-
 		sleep(7200)
 
 
