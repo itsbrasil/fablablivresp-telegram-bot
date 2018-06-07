@@ -46,42 +46,47 @@ def main():
 		if today != last_notification:
 			notified = False
 
-		if today == 10 and notified == False and hour > 10:
+		if today == 10 and notified == False and hour > 11:
 			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1])) 
 			notified = True
 			last_notification = today
 
-		elif today == 13 and notified == False and hour > 10:
+		elif today == 13 and notified == False and hour > 11:
 			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1])) 
 			notified = True
 			last_notification = today
 
-		elif today == 15 and notified == False and hour > 10:
+		elif today == 15 and notified == False and hour > 11:
 			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1])) 
 			notified = True
 			last_notification = today
 
-		elif today == 19 and notified == False and hour > 10:
+		elif today == 19 and notified == False and hour > 11:
 			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
 
-		elif today == 20 and notified == False and hour > 10:
+		elif today == 20 and notified == False and hour > 11:
 			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
 
-		elif today == 25 and notified == False and hour > 10:
+		elif today == 22 and notified == False and hour > 11:
 			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
 
-		elif today == 28 and notified == False and hour > 10:
+		elif today == 25 and notified == False and hour > 11:
 			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
 
-		elif today == 30 and notified == False and hour > 10:
+		elif today == 28 and notified == False and hour > 11:
+			bot.send_message(chat_id, messages[today]) 
+			notified = True
+			last_notification = today
+
+		elif today == 30 and notified == False and hour > 11:
 			bot.send_message(chat_id, messages[today]) 
 			notified = True
 			last_notification = today
