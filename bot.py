@@ -17,8 +17,8 @@ class BotHandler:
 		method = "sendMessage"
 		response = requests.post(self.api_url + method, parameters)
 
-		return response 
-	
+		return response
+
 
 config_file = "{}.cfg".format(sys.argv[1])
 token = readConfigData(config_file, sys.argv[2], "token")
@@ -36,7 +36,7 @@ def main():
 	global last_notification
 
 	while run_script:
-	
+
 		now = datetime.datetime.now()
 		today = now.day
 		month = now.month
@@ -47,54 +47,54 @@ def main():
 			notified = False
 
 		if today == 10 and notified == False and hour > 11:
-			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1])) 
+			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1], months[month+1 if month != 12 else 1]))
 			notified = True
 			last_notification = today
 
 		elif today == 13 and notified == False and hour > 11:
-			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1])) 
+			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1]))
 			notified = True
 			last_notification = today
 
 		elif today == 15 and notified == False and hour > 11:
-			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1])) 
+			bot.send_message(chat_id, messages[today].format(months[month+1 if month != 12 else 1]))
 			notified = True
 			last_notification = today
 
 		elif today == 19 and notified == False and hour > 11:
-			bot.send_message(chat_id, messages[today]) 
+			bot.send_message(chat_id, messages[today])
 			notified = True
 			last_notification = today
 
 		elif today == 20 and notified == False and hour > 11:
-			bot.send_message(chat_id, messages[today]) 
-			notified = True
-			last_notification = today
-
-		elif today == 22 and notified == False and hour > 11:
-			bot.send_message(chat_id, messages[today]) 
+			bot.send_message(chat_id, messages[today])
 			notified = True
 			last_notification = today
 
 		elif today == 25 and notified == False and hour > 11:
-			bot.send_message(chat_id, messages[today]) 
+			bot.send_message(chat_id, messages[today])
+			notified = True
+			last_notification = today
+
+		elif today == 27 and notified == False and hour > 11:
+			bot.send_message(chat_id, messages[today])
 			notified = True
 			last_notification = today
 
 		elif today == 28 and notified == False and hour > 11:
-			bot.send_message(chat_id, messages[today]) 
+			bot.send_message(chat_id, messages[today])
 			notified = True
 			last_notification = today
 
 		elif today == 30 and notified == False and hour > 11:
-			bot.send_message(chat_id, messages[today]) 
+			bot.send_message(chat_id, messages[today])
 			notified = True
 			last_notification = today
 
 		sleep(7200)
 
 
-if __name__ == '__main__':  
+if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
